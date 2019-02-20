@@ -1,0 +1,31 @@
+h1 {
+    font-size: 48px;
+}
+
+html,
+body,
+h1{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#header {
+    background-color: orange;
+    margin: -40px -40px 0px -40px;
+    padding: 4% 0px 2% 0px;
+    height: auto;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+
+}
+
+.size {
+    
+}
+
+.padding-top {
+    
+}
