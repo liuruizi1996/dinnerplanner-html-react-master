@@ -1,0 +1,18 @@
+h1 {font-size: 48px;}    
+     html,body,h1,h2,h3,h4,h5,h6 {
+         font-family: "Comic Sans MS", cursive, sans-serif;}
+     .vertical-container{
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+              align-items: center;
+        -webkit-justify-content: center;
+              justify-content: center;
+    }
+     .App-title{
+      background-color: orange;
+      margin: -20px -20px 0px -20px;
+      padding: 4% 0px 2% 0px;
+      height: auto;}
+     .size{size:20%;}
+     .padding-top{padding-top: 5%;}
