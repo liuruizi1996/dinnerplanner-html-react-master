@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 class Sidebar extends Component {
@@ -40,7 +41,7 @@ class Sidebar extends Component {
   render() {
     return (
       <div className="Sidebar container-fluid col-sm-12 col-md-3">
-          <nav className="navbar navbar-default" role="navigation" style={{margin: "0px -30px 0px -30px"}}>
+          <nav className="navbar navbar-default" role="navigation" style={{margin: "0px -30px 0px -10px"}}>
                         <div className="container-fluid">
                             <div className="navbar-header">
                                 <button type="button" className="navbar-toggle bg-primary" data-toggle="collapse" data-target="#navbar-collapse">
@@ -58,8 +59,9 @@ class Sidebar extends Component {
                                       onChange={this.onNumberOfGuestsChanged}
                                     />
                                 </div>
-                                <div id="gray_text" class="row  border-top border-bottom">
-                                    <p class="col-6 ">Dish name</p>
+                                <div id="gray_text" className="row  border-top border-bottom">
+                                    <p className="col-6 ">Dish name</p>
+                                    
                                     <div className="col-6">
                                         <p className="cost">Cost</p>
                                     </div>
@@ -70,7 +72,9 @@ class Sidebar extends Component {
                                     <p id="total_pricesm"></p>
                                 </div>
                                 <div id="button" className="align-middle mb-5" align="center">
+                                    <Link to="/dishdetails">
                                     <button id="Confirm_dinner" type="button" className="btn btn-secondary btn-lg">Confirm Dinner</button>
+                                    </Link>
                                 </div>
                             </div>
                         </div>

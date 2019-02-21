@@ -10,7 +10,8 @@ class Dishes extends Component {
     // We create the state to store the various statuses
     // e.g. API data loading or error
     this.state = {
-      status: "LOADING"
+      status: "LOADING",
+      baseurl:"https://spoonacular.com/recipeImages/"
     };
   }
 
@@ -46,8 +47,21 @@ class Dishes extends Component {
         dishesList = <em>Loading...</em>;
         break;
       case "LOADED":
+        console.log(this.state.dishes);
         dishesList = this.state.dishes.map(dish => (
-          <li key={dish.id}>{dish.title}</li>
+          
+          <div key={dish.id} id={dish.id} className="col-xs-12 col-sm-4 dishitemclass">
+           <div className="gallery">
+           <img src={this.state.baseurl+dish.image} alt={dish.title}/>
+           <div className="desc">{dish.title}</div>
+           </div>
+          </div>
+          
+          
+
+
+
+
         ));
         break;
       default:
@@ -58,7 +72,7 @@ class Dishes extends Component {
     return (
       <div className="Dishes container-fluid col-sm-12 col-md-9">
         <h3>Dishes</h3>
-        <ul>{dishesList}</ul>
+        <div>{dishesList}</div>
       </div>
     );
   }
