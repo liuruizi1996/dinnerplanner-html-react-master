@@ -1,18 +1,236 @@
-h1 {font-size: 48px;}    
-     html,body,h1,h2,h3,h4,h5,h6 {
-         font-family: "Comic Sans MS", cursive, sans-serif;}
-     .vertical-container{
-        display: -webkit-flex;
-        display: flex;
-        -webkit-align-items: center;
-              align-items: center;
-        -webkit-justify-content: center;
-              justify-content: center;
+h1 {
+    font-size: 48px;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.vertical-container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.App-title {
+    background-color: orange;
+    margin: -20px -20px 0px -20px;
+    padding: 4% 0px 2% 0px;
+    height: auto;
+}
+
+.size {
+    size: 20%;
+}
+
+.padding-top {
+    padding-top: 5%;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.vertical-container {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+
+.p3-sidebar {
+    height: 100%;
+    width: 100%;
+    background-color: #fff;
+    position: fixed !important;
+    z-index: 1;
+    overflow: auto;
+}
+
+.p3-border-right {
+    border-right: 1px solid #ccc !important;
+}
+
+.p3-bar-block .p3-bar-item {
+    width: 100%;
+    display: block;
+    padding: 8px 16px;
+    text-align: left;
+    border: none;
+    white-space: normal;
+    float: none;
+    outline: 0
+}
+
+.p3-large {
+    font-size: 18px !important;
+}
+
+.p3-button {
+    border: none;
+    display: inline-block;
+    padding: 8px 16px;
+    vertical-align: middle;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    background-color: inherit;
+    text-align: center;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.p3-xlarge {
+    font-size: 24px !important;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: "Comic Sans MS", cursive, sans-serif !important
+}
+
+div.gallery {
+    border: 1px solid #ccc;
+}
+
+div.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+.responsive {
+    float: left;
+    width: 20%;
+    padding: 6px 6px;
+    height: auto;
+}
+
+.desc {
+    padding: 15px;
+    text-align: center;
+}
+
+@media only screen and (max-width:900px) {
+    .responsive {
+        width: 50%;
     }
-     .App-title{
-      background-color: orange;
-      margin: -20px -20px 0px -20px;
-      padding: 4% 0px 2% 0px;
-      height: auto;}
-     .size{size:20%;}
-     .padding-top{padding-top: 5%;}
+}
+
+@media only screen and (max-width:500px) {
+    .responsive {
+        width: 100%;
+    }
+}
+
+#sidebarviewsm {
+    margin-left: -30px;
+}
+
+#mySidebar {
+    display: none;
+}
+
+#bar {
+    margin: 0px 20px 0px 20px;
+}
+
+#close_button {
+    text-align: right;
+    background-color: inherit;
+}
+
+#numberOfGuestssm #numberOfGuests {
+    margin-left: 20px;
+    text-align: center;
+    width: 20%;
+}
+
+#gray_text {
+    margin: 20px -30px 0px -40px;
+    padding-left: 20px;
+}
+
+.cost {
+    text-align: right;
+    padding-right: 17px;
+}
+
+.green_bar {
+    background-color: green;
+    margin-right: -60px;
+}
+
+#searchBar {
+    border: 2px dashed;
+    background-color: rgb(192, 192, 192);
+}
+
+#navigation {
+    background-color: darkgrey;
+    width: 100%;
+    height: auto;
+}
+
+#mydinnerpeople {
+    width: 100%;
+    height: auto;
+}
+
+#gobackandeditdinner {
+    width: 100%;
+    height: auto;
+}
+
+#dishprintoutview {
+    padding-top: 40px;
+    margin-right:50px;
+}
+
+#loaders {
+    overflow: hidden;
+    position: fixed;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    background: center no-repeat #fff;
+
+}
+
+#loader {
+    overflow: hidden;
+    position: fixed;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    background: center no-repeat #fff;
+
+}

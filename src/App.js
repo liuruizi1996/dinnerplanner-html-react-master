@@ -25,6 +25,7 @@ class App extends Component {
             path="/search"
             render={() => <SelectDish model={modelInstance} />}
           />
+
         </header>
       </div>
     );
