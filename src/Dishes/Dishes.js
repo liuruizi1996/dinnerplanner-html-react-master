@@ -56,7 +56,7 @@ class Dishes extends Component {
     }
 
     return (
-      <div className="Dishes">
+      <div className="Dishes container-fluid col-sm-12 col-md-9">
         <h3>Dishes</h3>
         <ul>{dishesList}</ul>
       </div>
