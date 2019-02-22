@@ -1,8 +1,10 @@
 import ObservableModel from "./ObservableModel";
 
-const BASE_URL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com";
+const BASE_URL = "http://sunset.nada.kth.se:8080/iprog/group/25/recipes/";
 const httpOptions = {
-  headers: { "X-Mashape-Key": "51d2d93092msh294ff1f5d680033p1aa16ejsnb444793dd0bc" }
+  headers: { //"X-Mashape-Key": "51d2d93092msh294ff1f5d680033p1aa16ejsnb444793dd0bc",
+             "X-Mashape-Key":"3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767",
+             "Access-Control-Allow-Origin": "http://sunset.nada.kth.se:8080/iprog/group/25/recipes/"}
 };
 
 class DinnerModel extends ObservableModel {
@@ -35,8 +37,9 @@ class DinnerModel extends ObservableModel {
    * Do an API call to the search API endpoint.
    * @returns {Promise<any>}
    */
+    
   getAllDishes() {
-    const url = `${BASE_URL}/recipes/search`;
+    const url = BASE_URL+"random?number=12";
     return fetch(url, httpOptions).then(this.processResponse);
   }
 

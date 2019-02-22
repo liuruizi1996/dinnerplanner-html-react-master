@@ -9,19 +9,10 @@ class Welcome extends Component {
       <div className="text-center">
             <p className="Welcometext padding-top">Our handy meal planner helps you plan a whole week of meals and makes cooking and shopping easier than 
             ever Our handy meal planner helps you plan a whole week of meals and makes cooking and shopping easier than 
-            ever Our handy meal planner helps you plan a whole week of meals and makes cooking and shopping easier than 
-            ever Our handy meal planner helps you plan a whole week of meals and makes cooking and shopping easier than 
-            ever Our handy meal planner helps you plan a whole week of meals and makes cooking and shopping easier than 
-            ver Our handy meal planner helps you plan a whole week of meals and makes cooking and shopping easier than 
-            ever Our handy meal planner helps you plan a whole week of meals and makes cooking and shopping easier than 
-            ever Our handy meal planner helps you plan a whole week of meals and makes cooking and shopping easier than 
-            ever
             </p>
-
-       
-          <Link to="/search">
-            <button className="btn btn-primary btn-lg Startbtn">Start planning</button>
-          </Link>
+            <Link to="/search">
+               <button className="btn btn-primary btn-lg Startbtn">Start planning</button>
+            </Link>
        </div>
 
 

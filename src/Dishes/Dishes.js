@@ -5,7 +5,7 @@ import modelInstance from "../data/DinnerModel";
 import "./Dishes.css";
 
 class Dishes extends Component {
-  constructor(props) {
+    constructor(props) {
     super(props);
     // We create the state to store the various statuses
     // e.g. API data loading or error
@@ -26,7 +26,7 @@ class Dishes extends Component {
       .then(dishes => {
         this.setState({
           status: "LOADED",
-          dishes: dishes.results
+          dishes: dishes.recipes
         });
       })
       .catch(() => {
@@ -52,16 +52,10 @@ class Dishes extends Component {
           
           <div key={dish.id} id={dish.id} className="col-xs-12 col-sm-4 dishitemclass">
            <div className="gallery">
-           <img src={this.state.baseurl+dish.image} alt={dish.title}/>
+           <img src={dish.image} alt={dish.title}/>
            <div className="desc">{dish.title}</div>
            </div>
           </div>
-          
-          
-
-
-
-
         ));
         break;
       default:
@@ -70,8 +64,8 @@ class Dishes extends Component {
     }
 
     return (
-      <div className="Dishes container-fluid col-sm-12 col-md-9">
-        <h3>Dishes</h3>
+    <div className="Dishes container-fluid col-sm-12 col-md-9">
+      <div className="Dishes">
          <div id="searchBar" className="container-fluid ">
   
                         <h5 className="pt-3"><strong>FIND A DISH</strong></h5>
@@ -111,6 +105,7 @@ class Dishes extends Component {
                     </div>
         <div>{dishesList}</div>
       </div>
+    </div>
     );
   }
 }

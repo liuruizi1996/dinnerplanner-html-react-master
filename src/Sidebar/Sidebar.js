@@ -41,18 +41,18 @@ class Sidebar extends Component {
   render() {
     return (
       <div className="Sidebar container-fluid col-sm-12 col-md-3">
-          <nav className="navbar navbar-default" role="navigation" style={{margin: "0px -30px 0px -10px"}}>
+          <div className="navbar navbar-default" role="navigation" style={{margin: "0px -30px 0px -10px"}}>
                         <div className="container-fluid">
                             <div className="navbar-header">
                                 <button type="button" className="navbar-toggle bg-primary" data-toggle="collapse" data-target="#navbar-collapse">
                                     <span >☰</span>
                                 </button>
-                                <a className="navbar-brand" href="#">My Dinner</a>
+                                <a className="navbar-brand" >My Dinner</a>
                             </div>
                             <div className="collapse navbar-collapse" id="navbar-collapse">
                                 <div id="people" className="row mt-3">
                                     <h5 className="col-4">people</h5>
-                                    <div class="col-4"></div>
+                                    <div className="col-4"></div>
                                     <input
                                       type="number"
                                       value={this.state.numberOfGuests}
@@ -78,7 +78,7 @@ class Sidebar extends Component {
                                 </div>
                             </div>
                         </div>
-                    </nav>
+                    </div>
             </div>
 
     );
