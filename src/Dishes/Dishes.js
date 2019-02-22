@@ -72,6 +72,43 @@ class Dishes extends Component {
     return (
       <div className="Dishes container-fluid col-sm-12 col-md-9">
         <h3>Dishes</h3>
+         <div id="searchBar" className="container-fluid ">
+  
+                        <h5 className="pt-3"><strong>FIND A DISH</strong></h5>
+                        <form>
+                        <div className="form-row align-item-center pb-3">
+                            
+                            <div className="col-xs-12 col-sm-3">
+                              <input 
+                              id="enterKeyWord" 
+                              type="text" 
+                              className="form-control" 
+                              name="enterKeyWord" 
+                              placeholder="Enter Key Word"/>
+                            </div>
+                            <div className="col-xs-12 col-sm-2">
+                              <select id="filter" className="form-control">
+                                  <option >All</option>
+                                  <option value="main course">Main dish</option>
+                                  <option value="dessert">Dessert</option>
+                                  <option value="side dish">Side dish</option>
+                                  <option value="appetizer">Appetizer</option>
+                                  <option value="salad">Salad</option>
+                                  <option value="bread">Bread</option>
+                                  <option value="breakfast">Breakfast</option>
+                                  <option value="soup">Soup</option>
+                                  <option value="beverage">Beverage</option>
+                                  <option value="sauce">Sauce</option>
+                                  <option value="drink">Drink</option>
+                        
+                              </select>
+                             </div>
+                             <div className="col-xs-12 col-sm-2">
+                              <button id="searchBotton" type="button" className="btn-danger btn-sm " >Search</button>
+                             </div>
+                        </div>
+                        </form>
+                    </div>
         <div>{dishesList}</div>
       </div>
     );

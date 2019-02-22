@@ -72,7 +72,7 @@ class Sidebar extends Component {
                                     <p id="total_pricesm"></p>
                                 </div>
                                 <div id="button" className="align-middle mb-5" align="center">
-                                    <Link to="/dishdetails">
+                                    <Link to="/dishprintout">
                                     <button id="Confirm_dinner" type="button" className="btn btn-secondary btn-lg">Confirm Dinner</button>
                                     </Link>
                                 </div>

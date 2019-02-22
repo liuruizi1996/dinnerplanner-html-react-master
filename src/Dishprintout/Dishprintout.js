@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./Dishdetails.css";
+import "./Dishprintout.css";
 
 class Dishdetails extends Component {
     render() {
