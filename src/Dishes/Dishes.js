@@ -11,7 +11,9 @@ class Dishes extends Component {
     // e.g. API data loading or error
     this.state = {
       status: "LOADING",
-      baseurl:"https://spoonacular.com/recipeImages/"
+      baseurl:"https://spoonacular.com/recipeImages/",
+      filter:"",
+      type:"salad",
     };
   }
 
@@ -22,13 +24,26 @@ class Dishes extends Component {
     // when data is retrieved we update the state
     // this will cause the component to re-render
     modelInstance
-      .getAllDishes()
+      .getAllDishes(this.state.type,this.state.filter)
       .then(dishes => {
-        this.setState({
+        console.log(this.state.filter || this.state.type != "All")
+        if(this.state.filter || this.state.type != "All"){
+          console.log(dishes)
+          this.setState({
+          status: "LOADED",
+          dishes: dishes.results,
+          
+        });
+        }
+        else
+        {console.log("All")
+          this.setState({
           status: "LOADED",
           dishes: dishes.recipes
-        });
+
+        });}
       })
+      .then(console.log(this.state.dishes))
       .catch(() => {
         this.setState({
           status: "ERROR"
@@ -59,6 +74,7 @@ class Dishes extends Component {
         ));
         break;
       default:
+        console.log(this.state.status);
         dishesList = <b>Failed to load data, please try again</b>;
         break;
     }

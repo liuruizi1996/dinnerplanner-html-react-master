@@ -38,9 +38,17 @@ class DinnerModel extends ObservableModel {
    * @returns {Promise<any>}
    */
     
-  getAllDishes() {
-    const url = BASE_URL+"random?number=12";
-    return fetch(url, httpOptions).then(this.processResponse);
+  getAllDishes(type,filter) {
+    if (filter || type != "All") {
+    let URL = BASE_URL+ "search?number=12&type=" + type + "&query=" + filter;
+    return fetch(URL,httpOptions).then(this.processResponse);
+  }
+    
+    else{
+        let url = BASE_URL+"random?number=12";
+        let dishes=fetch(url, httpOptions).then(this.processResponse);
+        return dishes;
+        }
   }
 
   processResponse(response) {
