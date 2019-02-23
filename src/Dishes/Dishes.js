@@ -13,7 +13,7 @@ class Dishes extends Component {
       status: "LOADING",
       baseurl:"https://spoonacular.com/recipeImages/",
       filter:"",
-      type:"salad",
+      type:"",
     };
   }
 
@@ -26,21 +26,19 @@ class Dishes extends Component {
     modelInstance
       .getAllDishes(this.state.type,this.state.filter)
       .then(dishes => {
-        console.log(this.state.filter || this.state.type != "All")
         if(this.state.filter || this.state.type != "All"){
-          console.log(dishes)
           this.setState({
           status: "LOADED",
           dishes: dishes.results,
-          
+          addBaseurl:true
         });
         }
         else
-        {console.log("All")
+        {
           this.setState({
           status: "LOADED",
-          dishes: dishes.recipes
-
+          dishes: dishes.recipes,
+          addBaseurl:false
         });}
       })
       .then(console.log(this.state.dishes))
@@ -63,6 +61,10 @@ class Dishes extends Component {
         break;
       case "LOADED":
         console.log(this.state.dishes);
+        if(this.state.addBaseurl){
+          this.state.dishes.forEach(dish=>dish.image="https://spoonacular.com/recipeImages/"+dish.image);
+        }
+        
         dishesList = this.state.dishes.map(dish => (
           
           <div key={dish.id} id={dish.id} className="col-xs-12 col-sm-4 dishitemclass">
