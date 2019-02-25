@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Dishdetails.css";
 import Sidebar from "../Sidebar/Sidebar";
-import Dishpic from "../Dishpic/Dishpic";
-import Ingredientslist from "../Ingredientslist/Ingredientslist";
+import PicDescribtion from "../Pic_Describtion/Pic_Describtion";
+import IngredientsList from "../Ingredientslist/Ingredientslist";
 
 
 
@@ -23,21 +23,24 @@ class Dishdetails extends Component {
     constructor() {
         super()
         this.state = {
-            id: ""
+            id: "385108"
         }
+        this.getDish = this.getDish.bind(this)
+        this.processResponse = this.processResponse.bind(this)
     }
 
 
     getDish(id) {
         var URL = BASE_URL + "informationBulk?ids=" + id;
-        //"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk?ids="+id
         return fetch(URL, httpOptions)
             .then(this.processResponse)
             .then(dish => {this.setState({
                 image: dish[0].image,
-                title: dish[0].title
+                title: dish[0].title,
+                instructions:dish[0].instructions,
+                extendedIngredients:dish[0].extendedIngredients
             });
-            console.log(this.state)})
+             console.log(this.state)})
             .catch(() => { console.log("error") })
     }
 
@@ -68,16 +71,16 @@ class Dishdetails extends Component {
 
     render() {
         return (
-            <div className="row">
-    <Sidebar model={this.props.model}/>
-    <div className="container-fluid col-sm-12 col-md-9">
     <div className="row">
-    <Dishpic id={this.state.id}
-             image={this.state.image}
-             title={this.state.title}/>
-    <Ingredientslist id={this.state.id}/>
-    </div>
-    </div>
+       <Sidebar model={this.props.model}/>
+       <div className="container-fluid col-sm-12 col-md-9">
+          <div className="row">
+             <PicDescribtion image={this.state.image}
+                              title={this.state.title}
+                              instructions={this.state.instructions}/>
+             <IngredientsList extendedIngredients={this.state.extendedIngredients}/>
+          </div>
+       </div>
     </div>
         );
     }
