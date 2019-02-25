@@ -6,7 +6,11 @@
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-redux": "^6.0.1",
+//<<<<<<< HEAD
     "react-router-dom": "^4.3.1",
+//=======
+//    "react-router-dom": "^4.2.2",
+//>>>>>>> 67a106ffdb093990dd5e8c7314c2483d6cade26c
     "react-scripts": "1.1.1",
     "redux": "^4.0.1"
   },
