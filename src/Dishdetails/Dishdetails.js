@@ -23,7 +23,7 @@ class Dishdetails extends Component {
     constructor() {
         super()
         this.state = {
-            id: "385108"
+            id: ""
         }
     }
 
@@ -33,10 +33,11 @@ class Dishdetails extends Component {
         //"https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk?ids="+id
         return fetch(URL, httpOptions)
             .then(this.processResponse)
-            .then(dish => this.setState({
-                image: dish.image,
-                title: dish.title
-            }))
+            .then(dish => {this.setState({
+                image: dish[0].image,
+                title: dish[0].title
+            });
+            console.log(this.state)})
             .catch(() => { console.log("error") })
     }
 
@@ -57,7 +58,6 @@ class Dishdetails extends Component {
     }*/
     componentDidMount() {
         this.getDish(385108);
-        console.log(this.state)
     }
 
     /*componentDidUpdate(prevProps, prevState) {
