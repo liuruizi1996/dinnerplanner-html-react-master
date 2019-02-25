@@ -85,14 +85,12 @@ class Dishes extends Component {
           this.state.dishes.forEach(dish=>dish.image="https://spoonacular.com/recipeImages/"+dish.image);
         }
         dishesList = this.state.dishes.map(dish => ( 
-            <Link to="/dishprintout">
           <div key={dish.id} id={dish.id} className="col-xs-12 col-sm-4 dishitemclass" >
            <div className="gallery">
            <img src={dish.image} alt={dish.title}/>
            <div className="desc">{dish.title}</div>
            </div>
           </div>
-            </Link>
         ));
         break;
       default:
