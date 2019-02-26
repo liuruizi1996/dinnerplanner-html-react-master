@@ -16,33 +16,32 @@ const httpOptions = {
     }
 }
 
-
-
-
 class Dishdetails extends Component {
     constructor() {
         super()
         this.state = {
-            id: "385108"
+            dish:"",
+            status: "LOADING"
         }
         this.getDish = this.getDish.bind(this)
         this.processResponse = this.processResponse.bind(this)
     }
-
+    
+    componentWillMount() {
+        console.log(this.props.dishID)
+        this.getDish(this.props.dishID);
+        console.log(this.state)
+    }
 
     getDish(id) {
         var URL = BASE_URL + "informationBulk?ids=" + id;
-        return fetch(URL, httpOptions)
-            .then(this.processResponse)
-            .then(dish => {this.setState({
-                image: dish[0].image,
-                title: dish[0].title,
-                instructions:dish[0].instructions,
-                extendedIngredients:dish[0].extendedIngredients
-            });
-             console.log(this.state)})
-            .catch(() => { console.log("error") })
-    }
+        console.log("yes")
+        return fetch(URL, httpOptions).then(this.processResponse)
+            .then(dish =>{this.setState({
+                dish:dish[0],
+                status:"LOADED"});console.log(this.state)})
+            .catch(() => {this.setState({status: "ERROR"})})
+    } 
 
     processResponse(response) {
         if (response.ok) {
@@ -59,31 +58,36 @@ class Dishdetails extends Component {
             };
         } else return null;
     }*/
-    componentDidMount() {
-        this.getDish(385108);
-    }
-
-    /*componentDidUpdate(prevProps, prevState) {
-        if (prevState.id !== this.state.id) {
-            this.getDish(this.state.id)
-        }
-    }*/
-
+    
+  
     render() {
+        let dishVis=null
+        switch (this.state.status) {
+          case "LOADING":
+            dishVis = <em>Loading...</em>;
+            break;
+          case "LOADED":
+            dishVis = 
+             <div className="row">
+                 <PicDescribtion dish={this.state.dish}/>
+                 <IngredientsList dish={this.state.dish}/>
+              </div>
+            break;
+          default:
+            console.log(this.state.status);
+            dishVis = <b>Failed to load data, please try again</b>;
+            break;}
+       
         return (
-    <div className="row">
-       <Sidebar model={this.props.model}/>
-       <div className="container-fluid col-sm-12 col-md-9">
           <div className="row">
-             <PicDescribtion image={this.state.image}
-                              title={this.state.title}
-                              instructions={this.state.instructions}/>
-             <IngredientsList extendedIngredients={this.state.extendedIngredients}/>
+             <Sidebar model={this.props.model}/>
+             <div className="container-fluid col-sm-12 col-md-9">      
+                  {dishVis} 
+              </div>  
           </div>
-       </div>
-    </div>
         );
     }
+  
 }
 
 export default Dishdetails;

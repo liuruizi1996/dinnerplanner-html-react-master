@@ -10,11 +10,17 @@ class SelectDish extends Component {
         this.state={
             keywords:"",
             type:"All",  
-            dishLoad:false
+            dishLoad:false,
+            key:""
         }
         this.keywordsChange=this.keywordsChange.bind(this)
         this.typeChange=this.typeChange.bind(this)
         this.loadDishItem=this.loadDishItem.bind(this)
+        this.dishIDCall=this.dishIDCall.bind(this)
+    }
+    dishIDCall(dishID){
+        var dishID=dishID
+        this.props.appIDCall(dishID)
     }
     
     keywordsChange(e){
@@ -44,7 +50,8 @@ class SelectDish extends Component {
                      loadDishItem={this.loadDishItem}/>
                <Dishes keywords={this.state.keywords}
                        type={this.state.type}
-                       dishLoad={this.state.dishLoad}/>
+                       dishLoad={this.state.dishLoad}
+                       dishIDCall={this.dishIDCall}/>
              </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {Link} from "react-router-dom"
 import "./Dishes.css";
 
 
@@ -21,7 +22,12 @@ class Dishes extends Component {
      this.getAllDishes=this.getAllDishes.bind(this)
      this.processResponse=this.processResponse.bind(this)
      this.getFilterDishes=this.getFilterDishes.bind(this)
-    }    
+     this.returnDishID=this.returnDishID.bind(this)
+    }
+    returnDishID(DishID){
+       var DishID=DishID
+       this.props.dishIDCall(DishID)
+   }
 
    getAllDishes(type,keywords) {
     if (keywords || type !== "All") {
@@ -85,12 +91,14 @@ class Dishes extends Component {
           this.state.dishes.forEach(dish=>dish.image="https://spoonacular.com/recipeImages/"+dish.image);
         }
         dishesList = this.state.dishes.map(dish => ( 
-          <div key={dish.id} id={dish.id} className="col-xs-12 col-sm-4 dishitemclass" >
+        <Link to="/dishdetails" key={dish.id}>
+          <div  id={dish.id} className="col-xs-12 col-sm-4 dishitemclass" onClick={()=>this.returnDishID(dish.id)}>
            <div className="gallery">
            <img src={dish.image} alt={dish.title}/>
            <div className="desc">{dish.title}</div>
            </div>
           </div>
+        </Link>
         ));
         break;
       default:
@@ -100,8 +108,8 @@ class Dishes extends Component {
     }
 
     return (
-    <div className="Dishes container-fluid row">
-         {dishesList}
+    <div className="Dishes container-fluid row" >
+        <div>{dishesList}</div> 
     </div>
     );
   }
