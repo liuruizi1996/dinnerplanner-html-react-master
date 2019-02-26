@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 class Sidebar extends Component {
@@ -39,19 +40,47 @@ class Sidebar extends Component {
 
   render() {
     return (
-      <div className="Sidebar">
-        <h3>This is the sidebar</h3>
-        <p>
-          People:
-          <input
-            type="number"
-            value={this.state.numberOfGuests}
-            onChange={this.onNumberOfGuestsChanged}
-          />
-          <br />
-          Total number of guests: {this.state.numberOfGuests}
-        </p>
-      </div>
+      <div className="Sidebar container-fluid col-sm-12 col-md-3">
+          <div className="navbar navbar-default" role="navigation" style={{margin: "0px -30px 0px -10px"}}>
+                        <div className="container-fluid">
+                            <div className="navbar-header">
+                                <button type="button" className="navbar-toggle bg-primary" data-toggle="collapse" data-target="#navbar-collapse">
+                                    <span >☰</span>
+                                </button>
+                                <a className="navbar-brand" >My Dinner</a>
+                            </div>
+                            <div className="collapse navbar-collapse" id="navbar-collapse">
+                                <div id="people" className="row mt-3">
+                                    <h5 className="col-4">people</h5>
+                                    <div className="col-4"></div>
+                                    <input
+                                      type="number"
+                                      value={this.state.numberOfGuests}
+                                      onChange={this.onNumberOfGuestsChanged}
+                                    />
+                                </div>
+                                <div id="gray_text" className="row  border-top border-bottom">
+                                    <p className="col-6 ">Dish name</p>
+                                    
+                                    <div className="col-6">
+                                        <p className="cost">Cost</p>
+                                    </div>
+                                </div>
+                                <div id="selctedmenu">
+                                </div>
+                                <div align="right">
+                                    <p id="total_pricesm"></p>
+                                </div>
+                                <div id="button" className="align-middle mb-5" align="center">
+                                    <Link to="/dishprintout">
+                                    <button id="Confirm_dinner" type="button" className="btn btn-secondary btn-lg">Confirm Dinner</button>
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
     );
   }
 }
