@@ -15,19 +15,16 @@ class IngredientsList extends Component {
     
     
     addDishToMenu() {
-        var key = -1;
+        var index = -1;
         do {
-            key++;
-        } while ((this.state.menuType.indexOf(this.state.dish.dishTypes[key]) == -1) && ((key + 1) < this.state.dish.dishTypes.length));
+            index++;
+        } while ((this.state.menuType.indexOf(this.state.dish.dishTypes[index]) == -1) && ((index + 1) < this.state.dish.dishTypes.length));
         var newOrdermenu= this.state.ordermenu
-        newOrdermenu.splice(this.state.menuType.indexOf(this.state.dish.dishTypes[key]),0,this.state.dish);
-        console.log(key)
-        console.log(this.state.dish.dishTypes[key])
-        console.log(this.state.menuType.indexOf(this.state.dish.dishTypes[key]))
+        newOrdermenu[this.state.menuType.indexOf(this.state.dish.dishTypes[index])]=this.state.dish
         this.setState({
              ordermenu: newOrdermenu
         });
-        console.log(newOrdermenu)
+        this.props.ordermenuCall(this.state.ordermenu)
     }
 
     

@@ -5,6 +5,7 @@ import modelInstance from "./data/DinnerModel";
 import SelectDish from "./SelectDish/SelectDish";
 import Dishdetails from "./Dishdetails/Dishdetails"
 import DishOverview from "./DishOverview/DishOverview"
+import Dishprintout from "./Dishprintout/Dishprintout"
 import "./App.css";
 
 
@@ -33,6 +34,7 @@ class App extends Component {
           <Route path="/search" render={() => <SelectDish model={modelInstance} appIDCall={this.appIDCall}/>}/>
           <Route path="/dishdetails" render={() => <Dishdetails model={modelInstance} dishID={this.state.dishID}/>}/>
           <Route path="/dishoverview" render={() => <DishOverview/>}/>
+          <Route path="/dishprintout" render={()=><Dishprintout/>}/>
         </header>
       </div>
     );

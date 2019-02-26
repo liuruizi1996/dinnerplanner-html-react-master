@@ -15,7 +15,8 @@ class DishOverview extends Component{
     }
     componentDidMount(){
         this.setState({
-            dishes:[{id:207766,title:"Dinner Tonight: Hunan Beef with Cumin",image:"https://spoonacular.com/recipeImages/207766-556x370.jpg"}  ]  
+            dishes:[{id:207766,title:"Dinner Tonight: Hunan Beef with Cumin",image:"https://spoonacular.com/recipeImages/207766-556x370.jpg"} ,
+                    {id:207766,title:"good",image:"https://spoonacular.com/recipeImages/207766-556x370.jpg"} ]  
         })
     }
     

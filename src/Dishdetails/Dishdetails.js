@@ -25,6 +25,7 @@ class Dishdetails extends Component {
         }
         this.getDish = this.getDish.bind(this)
         this.processResponse = this.processResponse.bind(this)
+        this.ordermenuCall = this.ordermenuCall.bind(this)
     }
     
     componentWillMount() {
@@ -49,6 +50,11 @@ class Dishdetails extends Component {
         }
         throw response;
     }
+
+    ordermenuCall(ordermenu){
+        var Ordermenu=ordermenu
+        console.log(ordermenu)
+    }
     /*static getDerivedStateFromProps(nextProps, prevState) {
         if (nextProps.dishLoad !== prevState.dishLoad) {
             return {
@@ -70,7 +76,7 @@ class Dishdetails extends Component {
             dishVis = 
              <div className="row">
                  <PicDescribtion dish={this.state.dish}/>
-                 <IngredientsList dish={this.state.dish}/>
+                 <IngredientsList dish={this.state.dish} ordermenuCall={this.ordermenuCall}/>
               </div>
             break;
           default:
