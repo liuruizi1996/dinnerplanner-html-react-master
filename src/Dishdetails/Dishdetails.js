@@ -17,11 +17,12 @@ const httpOptions = {
 }
 
 class Dishdetails extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             dish:"",
-            status: "LOADING"
+            status: "LOADING",
+            ordermenu:[]
         }
         this.getDish = this.getDish.bind(this)
         this.processResponse = this.processResponse.bind(this)
@@ -29,18 +30,15 @@ class Dishdetails extends Component {
     }
     
     componentWillMount() {
-        console.log(this.props.dishID)
         this.getDish(this.props.dishID);
-        console.log(this.state)
     }
 
     getDish(id) {
         var URL = BASE_URL + "informationBulk?ids=" + id;
-        console.log("yes")
         return fetch(URL, httpOptions).then(this.processResponse)
-            .then(dish =>{this.setState({
+            .then(dish =>this.setState({
                 dish:dish[0],
-                status:"LOADED"});console.log(this.state)})
+                status:"LOADED"}))
             .catch(() => {this.setState({status: "ERROR"})})
     } 
 
@@ -51,9 +49,10 @@ class Dishdetails extends Component {
         throw response;
     }
 
-    ordermenuCall(ordermenu){
-        var Ordermenu=ordermenu
-        console.log(ordermenu)
+    ordermenuCall(menu){
+        var menu=menu
+        this.setState({ordermenu:menu})
+        console.log(menu)
     }
     /*static getDerivedStateFromProps(nextProps, prevState) {
         if (nextProps.dishLoad !== prevState.dishLoad) {
@@ -76,7 +75,8 @@ class Dishdetails extends Component {
             dishVis = 
              <div className="row">
                  <PicDescribtion dish={this.state.dish}/>
-                 <IngredientsList dish={this.state.dish} ordermenuCall={this.ordermenuCall}/>
+                 <IngredientsList dish={this.state.dish} ordermenuCall={this.ordermenuCall} 
+                                  ordermenu={this.state.ordermenu}/>
               </div>
             break;
           default:

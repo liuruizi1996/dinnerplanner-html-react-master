@@ -15,14 +15,21 @@ class App extends Component {
     super(props);
     this.state = {
       title: "Dinner Planner",
-      dishID:""
+      dishID:"",
+      ordermenu:""
     };
     this.appIDCall=this.appIDCall.bind(this)
+    this.ordermenuCall= this.ordermenuCall.bind(this)
   }
   
   appIDCall(dishID){
       var dishID=dishID
       this.setState({dishID:dishID})
+  }
+    
+  ordermenuCall(menu){
+      var menu=menu
+      this.setState({ordermenu:menu})
   }
   
   render() {
@@ -32,7 +39,10 @@ class App extends Component {
           <h1 className="App-title vertical-container">{this.state.title}</h1>
           <Route exact path="/" component={Welcome} />
           <Route path="/search" render={() => <SelectDish model={modelInstance} appIDCall={this.appIDCall}/>}/>
-          <Route path="/dishdetails" render={() => <Dishdetails model={modelInstance} dishID={this.state.dishID}/>}/>
+          <Route path="/dishdetails" render={() => <Dishdetails model={modelInstance} 
+                                                                dishID={this.state.dishID}
+                                                                ordermenuCall={this.ordermenuCall}
+      ordermenu={this.state.ordermenu}/>}/>
           <Route path="/dishoverview" render={() => <DishOverview/>}/>
           <Route path="/dishprintout" render={()=><Dishprintout/>}/>
         </header>

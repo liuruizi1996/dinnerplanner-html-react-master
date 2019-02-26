@@ -8,7 +8,7 @@ class IngredientsList extends Component {
         this.state={
             dish:this.props.dish,
             menuType:['main course', 'side dish', 'dessert', 'appetizer', 'salad', 'bread', 'breakfast', 'soup', 'beverage', 'sauce', 'drink','undefined'],
-            ordermenu:[]
+            ordermenu:this.props.ordermenu
          }
          this.addDishToMenu=this.addDishToMenu.bind(this)
     }
@@ -19,21 +19,21 @@ class IngredientsList extends Component {
         do {
             index++;
         } while ((this.state.menuType.indexOf(this.state.dish.dishTypes[index]) == -1) && ((index + 1) < this.state.dish.dishTypes.length));
+        console.log(this.state.ordermenu)
         var newOrdermenu= this.state.ordermenu
+        console.log(index)
+        console.log(this.state.menuType.indexOf(this.state.dish.dishTypes[index]))
+        console.log(newOrdermenu)
         newOrdermenu[this.state.menuType.indexOf(this.state.dish.dishTypes[index])]=this.state.dish
-        this.setState({
-             ordermenu: newOrdermenu
-        });
-        this.props.ordermenuCall(this.state.ordermenu)
+        
+        
+        this.props.ordermenuCall(newOrdermenu)
     }
 
-    
-    
     render() {
-        console.log(this.state)
         let ingredientslist = null;
         ingredientslist = this.state.dish.extendedIngredients && this.state.dish.extendedIngredients.map(ingredient => ( 
-          <tr key={ingredient.id}>
+          <tr key={ingredient.id+ingredient.amount}>
               <th>{ingredient.amount/*(ingredient.amount*model.getNumberOfGuests()).toFixed(2)*/}</th>
               <th>{ingredient.unit}</th>
               <th>{ingredient.name}</th>
