@@ -22,7 +22,7 @@ class Dishdetails extends Component {
         this.state = {
             dish:"",
             status: "LOADING",
-            ordermenu:[]
+            ordermenu:this.props.ordermenu
         }
         this.getDish = this.getDish.bind(this)
         this.processResponse = this.processResponse.bind(this)
@@ -51,8 +51,7 @@ class Dishdetails extends Component {
 
     ordermenuCall(menu){
         var menu=menu
-        this.setState({ordermenu:menu})
-        console.log(menu)
+        this.props.ordermenuCall(menu)
     }
     /*static getDerivedStateFromProps(nextProps, prevState) {
         if (nextProps.dishLoad !== prevState.dishLoad) {
@@ -67,6 +66,7 @@ class Dishdetails extends Component {
   
     render() {
         let dishVis=null
+
         switch (this.state.status) {
           case "LOADING":
             dishVis = <em>Loading...</em>;
@@ -83,7 +83,7 @@ class Dishdetails extends Component {
             console.log(this.state.status);
             dishVis = <b>Failed to load data, please try again</b>;
             break;}
-       
+        console.log(this.state.ordermenu)
         return (
           <div className="row">
              <Sidebar model={this.props.model}/>

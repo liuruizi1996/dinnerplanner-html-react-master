@@ -19,19 +19,15 @@ class IngredientsList extends Component {
         do {
             index++;
         } while ((this.state.menuType.indexOf(this.state.dish.dishTypes[index]) == -1) && ((index + 1) < this.state.dish.dishTypes.length));
-        console.log(this.state.ordermenu)
-        var newOrdermenu= this.state.ordermenu
-        console.log(index)
-        console.log(this.state.menuType.indexOf(this.state.dish.dishTypes[index]))
-        console.log(newOrdermenu)
+        
+        var newOrdermenu= this.props.ordermenu
         newOrdermenu[this.state.menuType.indexOf(this.state.dish.dishTypes[index])]=this.state.dish
-        
-        
         this.props.ordermenuCall(newOrdermenu)
     }
 
     render() {
         let ingredientslist = null;
+        console.log(this.props.ordermenu)
         ingredientslist = this.state.dish.extendedIngredients && this.state.dish.extendedIngredients.map(ingredient => ( 
           <tr key={ingredient.id+ingredient.amount}>
               <th>{ingredient.amount/*(ingredient.amount*model.getNumberOfGuests()).toFixed(2)*/}</th>
