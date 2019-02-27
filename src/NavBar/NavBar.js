@@ -16,7 +16,9 @@ class NavBar extends Component {
                 </div>
                 <div className="col-xs-12 col-sm-4"></div>
                 <div id="gobackandeditdinner"className="col-xs-12 col-sm-4" align="center" >
+                    <Link to="/search">
                     <button id="back2editdinner" type="button" className="btn btn-danger">Go back and edit dinner</button>
+                    </Link>
                 </div>
             </div>
         )

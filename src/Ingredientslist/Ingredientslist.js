@@ -7,32 +7,40 @@ class IngredientsList extends Component {
         super(props);
         this.state={
             dish:this.props.dish,
-            menuType:['main course', 'side dish', 'dessert', 'appetizer', 'salad', 'bread', 'breakfast', 'soup', 'beverage', 'sauce', 'drink','undefined'],
-            ordermenu:[{}]
+            menuType:['main course', 'side dish', 'dessert', 'appetizer', 'salad', 'bread', 'breakfast', 'soup', 'beverage','sauce', 'drink','undefined'],
+            ordermenu:this.props.ordermenu
          }
          this.addDishToMenu=this.addDishToMenu.bind(this)
     }
     
     
     addDishToMenu() {
-        var key = -1;
+        var index = -1;
         do {
-            key++;
-        } while ((this.state.menuType.indexOf(this.state.dish.dishTypes[key]) == -1) && ((key + 1) < this.state.dish.dishTypes.length));
-        const newOrdermenu = this.state.ordermenu.slice(0); // copy
-        newOrdermenu.splice(this.state.ordermenu.indexOf(this.state.dish.dishTypes[key]),0,this.state.dish);
-        this.setState({
-             ordermenu: newOrdermenu
-        });
+            index++;
+        } while ((this.state.menuType.indexOf(this.state.dish.dishTypes[index]) == -1) && ((index + 1) < this.state.dish.dishTypes.length));
+        
+        var newOrdermenu= this.props.ordermenu
+        newOrdermenu[this.state.menuType.indexOf(this.state.dish.dishTypes[index])]=this.state.dish
+        var ordermenu=JSON.stringify(newOrdermenu)
+        localStorage.setItem("ordermenu",ordermenu)
+        
+        var order_menu=JSON.parse(localStorage.getItem("ordermenu"))
+        console.log(localStorage)
+        console.log(order_menu)
+        //newOrdermenu.map(function(dish,index){
+        //document.cookie=index+"="+dish.id
+        //})
+        
+        //console.log(document.cookie)
+        this.props.ordermenuCall(newOrdermenu)
     }
 
-    
-    
     render() {
-        console.log(this.state)
         let ingredientslist = null;
+        console.log(this.props.ordermenu)
         ingredientslist = this.state.dish.extendedIngredients && this.state.dish.extendedIngredients.map(ingredient => ( 
-          <tr key={ingredient.id}>
+          <tr key={ingredient.id+ingredient.amount}>
               <th>{ingredient.amount/*(ingredient.amount*model.getNumberOfGuests()).toFixed(2)*/}</th>
               <th>{ingredient.unit}</th>
               <th>{ingredient.name}</th>

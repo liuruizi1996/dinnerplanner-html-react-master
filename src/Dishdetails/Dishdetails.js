@@ -17,29 +17,28 @@ const httpOptions = {
 }
 
 class Dishdetails extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             dish:"",
-            status: "LOADING"
+            status: "LOADING",
+            ordermenu:this.props.ordermenu
         }
         this.getDish = this.getDish.bind(this)
         this.processResponse = this.processResponse.bind(this)
+        this.ordermenuCall = this.ordermenuCall.bind(this)
     }
     
     componentWillMount() {
-        console.log(this.props.dishID)
         this.getDish(this.props.dishID);
-        console.log(this.state)
     }
 
     getDish(id) {
         var URL = BASE_URL + "informationBulk?ids=" + id;
-        console.log("yes")
         return fetch(URL, httpOptions).then(this.processResponse)
-            .then(dish =>{this.setState({
+            .then(dish =>this.setState({
                 dish:dish[0],
-                status:"LOADED"});console.log(this.state)})
+                status:"LOADED"}))
             .catch(() => {this.setState({status: "ERROR"})})
     } 
 
@@ -48,6 +47,11 @@ class Dishdetails extends Component {
             return response.json();
         }
         throw response;
+    }
+
+    ordermenuCall(menu){
+        var menu=menu
+        this.props.ordermenuCall(menu)
     }
     /*static getDerivedStateFromProps(nextProps, prevState) {
         if (nextProps.dishLoad !== prevState.dishLoad) {
@@ -62,6 +66,7 @@ class Dishdetails extends Component {
   
     render() {
         let dishVis=null
+
         switch (this.state.status) {
           case "LOADING":
             dishVis = <em>Loading...</em>;
@@ -70,17 +75,18 @@ class Dishdetails extends Component {
             dishVis = 
              <div className="row">
                  <PicDescribtion dish={this.state.dish}/>
-                 <IngredientsList dish={this.state.dish}/>
+                 <IngredientsList dish={this.state.dish} ordermenuCall={this.ordermenuCall} 
+                                  ordermenu={this.state.ordermenu}/>
               </div>
             break;
           default:
             console.log(this.state.status);
             dishVis = <b>Failed to load data, please try again</b>;
             break;}
-       
+        console.log(this.state.ordermenu)
         return (
           <div className="row">
-             <Sidebar model={this.props.model}/>
+             <Sidebar model={this.props.model} ordermenu={this.props.ordermenu}/>
              <div className="container-fluid col-sm-12 col-md-9">      
                   {dishVis} 
               </div>  

@@ -10,25 +10,23 @@ class DishOverview extends Component{
     constructor(props){
         super(props)
         this.state={
-            dishes:""
+            ordermenu:this.props.ordermenu
         }
     }
-    componentDidMount(){
-        this.setState({
-            dishes:[{id:207766,title:"Dinner Tonight: Hunan Beef with Cumin",image:"https://spoonacular.com/recipeImages/207766-556x370.jpg"}  ]  
-        })
-    }
+
     
     render(){
         return(
           <div className="container-fluid">
             <NavBar/>
             <div className="container-fluid">
-                <DishVision dishes={this.state.dishes}/>
+                <DishVision ordermenu={this.state.ordermenu}/>
                 <div id="printfullrecipevision"className="row"  >
                    <div className="col-xs-12 col-sm-5"></div>
                    <div id="printfullrecipe" className="col-xs-12 col-sm-2">
+                       <Link to="/dishprintout">
                        <button id="printrecipe" className="btn btn-warning " type="button">Print Full Recipe</button>
+                       </Link>
                    </div>
                    <div className="col-xs-12 col-sm-5"></div>
                 </div>

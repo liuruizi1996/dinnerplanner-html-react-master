@@ -11,7 +11,6 @@ class PicDescribtion extends Component {
     }
     
     render() {
-        console.log(this.props)
         return (
             <div id="pic_discription" className="container-fluid col-sm-12 col-md-6">
                 <h3 id="dish_name"><strong>{this.state.dish.title}</strong></h3>

@@ -6,12 +6,12 @@ class DishVision extends Component{
         super(props)
     }
     
-    
-    
+       
     render(){
         let dishvision = null
         if(dishvision==null){
-        dishvision = this.props.dishes && this.props.dishes.map(dish =>(
+        let ordermenu=this.props.ordermenu.filter(d=>d)
+        dishvision = ordermenu && ordermenu.map(dish =>(
         <div key={dish.id} className="col-xs-12 col-sm-4">
           <div id="vision_pic"className="gallery border" >
             <img src={dish.image} alt={dish.title}/>
