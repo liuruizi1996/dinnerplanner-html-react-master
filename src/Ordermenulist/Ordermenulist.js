@@ -26,7 +26,7 @@ class DishVision extends Component {
             let ordermenu=this.props.ordermenu.filter(d=>d)
             dishvision = ordermenu && ordermenu.map(dish => (
 
-                <div id={dish.title} className="row" style={styles1}>
+                <div key={dish.id} id={dish.title} className="row" style={styles1}>
                     <div className="col-md-2" style={{width:"100%", padding_top:"15px"}}>
                         <img className="img-fluid img-thumbnail" src={dish.image} style={imagestyle} alt={dish.title}/ >
                     </div>

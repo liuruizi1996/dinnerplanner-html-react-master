@@ -48,22 +48,35 @@ class Sidebar extends Component {
     };
 
     returnDishPrice(array) {
+        console.log("returnDishPrice")
         if (array && array.length) {
             return (((array.length) * (this.state.numberOfGuests)).toFixed(2))
         }
-        return 0
+        return ""
+
     }
 
+    Addtotal_price(dishes){
+        let sum=0;
+        function getSum(item){
+            sum += item.extendedIngredients.length;
+        }
+        dishes.forEach(getSum);
+        return sum 
+
+    }
 
     render() {
         let selectedMenu = null
         let ordermenu = this.state.ordermenu.filter(d => d)
+        let total_price=this.Addtotal_price(ordermenu)*this.state.numberOfGuests
+        localStorage.total_price=total_price
         selectedMenu = ordermenu && ordermenu.map(dish => (
-            <div key={dish.id} className="d-flex row">
+            <div key={dish.id+dish.title} className="d-flex row">
               <p className="col-3">{dish.title}</p>
               <p className="col-3"></p>
               <p className="col-3"></p>
-              <p className="col-3">SEK</p>
+              <p className="col-3">SEK{dish.extendedIngredients.length*this.state.numberOfGuests}</p>
             </div>
         ))
         
@@ -98,7 +111,7 @@ class Sidebar extends Component {
                                 <div id="selectedmenu" >{selectedMenu}
                                 </div>
                                 <div align="right">
-                                    <p id="total_price">Total price SEK {this.state.total_price}</p>
+                                    <p id="total_price">Total price SEK {total_price}</p>
                                 </div>
                                 <div id="button" className="align-middle mb-5" align="center">
                                     <Link to="/dishoverview">

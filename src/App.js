@@ -7,7 +7,6 @@ import Dishdetails from "./Dishdetails/Dishdetails"
 import DishOverview from "./DishOverview/DishOverview"
 import Dishprintout from "./Dishprintout/Dishprintout"
 import "./App.css";
-const BASE_URL = "http://sunset.nada.kth.se:8080/iprog/group/25/recipes/"
 const httpOptions = {
     headers: { //"X-Mashape-Key": "51d2d93092msh294ff1f5d680033p1aa16ejsnb444793dd0bc",
         "X-Mashape-Key": "3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767",
@@ -24,12 +23,12 @@ class App extends Component {
             dishID: "",
             ordermenu: JSON.parse(localStorage.getItem("ordermenu")),
             menuType: ['main course', 'side dish', 'dessert', 'appetizer', 'salad', 'bread', 'breakfast', 'soup', 'beverage', 'sauce', 'drink', 'undefined'],
-
+            
         };
         this.appIDCall = this.appIDCall.bind(this)
         this.ordermenuCall = this.ordermenuCall.bind(this)
 
-        
+
     }
 
     appIDCall(dishID) {
@@ -40,8 +39,9 @@ class App extends Component {
 
     ordermenuCall(menu) {
         var menu = menu
-        this.setState({ ordermenu: menu
-                         })
+        this.setState({
+            ordermenu: menu
+        })
     }
 
     componentDidMount() {
@@ -52,6 +52,7 @@ class App extends Component {
     }
 
     render() {
+
         return (
             <div className="App">
         <header className="App-header">

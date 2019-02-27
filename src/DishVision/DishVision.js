@@ -17,7 +17,7 @@ class DishVision extends Component{
             <img src={dish.image} alt={dish.title}/>
             <div className="desc" >{dish.title}</div>
           </div>
-          <h6 align="right">SEK</h6>
+          <h6 align="right">SEK {dish.extendedIngredients.length*localStorage.numberOfGuests}</h6>
         </div>
     ))}
         
@@ -27,7 +27,7 @@ class DishVision extends Component{
                <div id="dishvision"  className="col-xs-12 col-sm-8 container-fluid row">{dishvision}           
                </div>
                <div id="pricevision" className="col-xs-12 col-sm-1 container row">
-                  <p >Total: </p>
+                  <p >Total:SEK {localStorage.total_price} </p>
                   <p id="total1"></p>     
                </div>
                <div className="col-xs-12 col-sm-1"></div>
