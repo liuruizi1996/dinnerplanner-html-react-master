@@ -23,7 +23,8 @@ class DishVision extends Component {
           width: '100%'
         }
         if (dishvision == null) {
-            dishvision = this.props.dishes && this.props.dishes.map(dish => (
+            let ordermenu=this.props.ordermenu.filter(d=>d)
+            dishvision = ordermenu && ordermenu.map(dish => (
 
                 <div id={dish.title} className="row" style={styles1}>
                     <div className="col-md-2" style={{width:"100%", padding_top:"15px"}}>

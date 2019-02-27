@@ -5,13 +5,14 @@ import "./SelectDish.css";
 
 
 class SelectDish extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state={
             keywords:"",
             type:"All",  
             dishLoad:false,
-            key:""
+            key:"",
+            ordermenu:this.props.ordermenu
         }
         this.keywordsChange=this.keywordsChange.bind(this)
         this.typeChange=this.typeChange.bind(this)
@@ -21,6 +22,7 @@ class SelectDish extends Component {
     dishIDCall(dishID){
         var dishID=dishID
         this.props.appIDCall(dishID)
+        console.log(localStorage)
     }
     
     keywordsChange(e){
@@ -41,7 +43,8 @@ class SelectDish extends Component {
         return (
         <div className="SelectDish container-fluid">
            <div className="row">
-             <Sidebar model={this.props.model}/>
+             <Sidebar model={this.props.model}
+                      ordermenu={this.state.ordermenu}/>
              <div className="container-fluid col-sm-12 col-md-9">
                <SearchBar keywords={this.state.keywords}
                      type={this.state.type}

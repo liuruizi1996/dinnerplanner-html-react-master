@@ -7,7 +7,7 @@ class IngredientsList extends Component {
         super(props);
         this.state={
             dish:this.props.dish,
-            menuType:['main course', 'side dish', 'dessert', 'appetizer', 'salad', 'bread', 'breakfast', 'soup', 'beverage', 'sauce', 'drink','undefined'],
+            menuType:['main course', 'side dish', 'dessert', 'appetizer', 'salad', 'bread', 'breakfast', 'soup', 'beverage','sauce', 'drink','undefined'],
             ordermenu:this.props.ordermenu
          }
          this.addDishToMenu=this.addDishToMenu.bind(this)
@@ -22,6 +22,17 @@ class IngredientsList extends Component {
         
         var newOrdermenu= this.props.ordermenu
         newOrdermenu[this.state.menuType.indexOf(this.state.dish.dishTypes[index])]=this.state.dish
+        var ordermenu=JSON.stringify(newOrdermenu)
+        localStorage.setItem("ordermenu",ordermenu)
+        
+        var order_menu=JSON.parse(localStorage.getItem("ordermenu"))
+        console.log(localStorage)
+        console.log(order_menu)
+        //newOrdermenu.map(function(dish,index){
+        //document.cookie=index+"="+dish.id
+        //})
+        
+        //console.log(document.cookie)
         this.props.ordermenuCall(newOrdermenu)
     }
 

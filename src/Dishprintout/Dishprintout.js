@@ -10,21 +10,16 @@ class Dishprintout extends Component{
     constructor(props){
         super(props)
         this.state={
-            dishes:""
+            ordermenu:this.props.ordermenu
         }
     }
-    componentDidMount(){
-        this.setState({
-            dishes:[{id:207766,title:"Dinner Tonight: Hunan Beef with Cumin",image:"https://spoonacular.com/recipeImages/207766-556x370.jpg"} ,
-                    {id:207766,title:"Dinner Tonight: Hunan Beef with Cumin",image:"https://spoonacular.com/recipeImages/207766-556x370.jpg"}]  
-        })
-    }
+   
     
     render(){
         return(
           <div className="container-fluid">
             <NavBar/>
-            <Ordermenulist dishes={this.state.dishes}/>
+            <Ordermenulist ordermenu={this.state.ordermenu}/>
           </div>
         )
     }
