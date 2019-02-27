@@ -43,15 +43,16 @@ class Sidebar extends Component {
 
   render() {
       let selectedMenu=null
-      let ordermenu=this.props.ordermenu.filter(d=>d)
-      selectedMenu = ordermenu&&ordermenu.map(dish=>(
-          <div key={dish.id} className="d-flex row">
-            <p className="col-3">{dish.title}</p>
-            <p className="col-3"></p>
-            <p className="col-3"></p>
-            <p className="col-3">SEK</p>
-          </div>
-      ))
+      if (this.state.ordermenu!==null) 
+      {let ordermenu=this.props.ordermenu.filter(d=>d)
+            selectedMenu = ordermenu&&ordermenu.map(dish=>(
+                <div key={dish.id} className="d-flex row">
+                  <p className="col-3">{dish.title}</p>
+                  <p className="col-3"></p>
+                  <p className="col-3"></p>
+                  <p className="col-3">SEK</p>
+                </div>
+            ))}
       
     return (
       <div className="Sidebar container-fluid col-sm-12 col-md-3">
