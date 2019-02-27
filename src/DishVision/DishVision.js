@@ -6,8 +6,7 @@ class DishVision extends Component{
         super(props)
     }
     
-    
-    
+       
     render(){
         let dishvision = null
         if(dishvision==null){

@@ -86,7 +86,7 @@ class Dishdetails extends Component {
         console.log(this.state.ordermenu)
         return (
           <div className="row">
-             <Sidebar model={this.props.model}/>
+             <Sidebar model={this.props.model} ordermenu={this.props.ordermenu}/>
              <div className="container-fluid col-sm-12 col-md-9">      
                   {dishVis} 
               </div>  

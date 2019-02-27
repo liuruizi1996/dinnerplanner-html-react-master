@@ -8,7 +8,8 @@ class Sidebar extends Component {
 
     // we put on state the properties we want to use and modify in the component
     this.state = {
-      numberOfGuests: this.props.model.getNumberOfGuests()
+      numberOfGuests: this.props.model.getNumberOfGuests(),
+      ordermenu:this.props.ordermenu
     };
   }
 
@@ -37,8 +38,20 @@ class Sidebar extends Component {
   onNumberOfGuestsChanged = e => {
     this.props.model.setNumberOfGuests(e.target.value);
   };
+  
+  
 
   render() {
+      let selectedMenu=null
+      selectedMenu = this.props.ordermenu&&this.props.ordermenu.map(dish=>(
+          <div key={dish.id} className="d-flex row">
+            <p className="col-3">{dish.title}</p>
+            <p className="col-3"></p>
+            <p className="col-3"></p>
+            <p className="col-3">SEK</p>
+          </div>
+      ))
+      
     return (
       <div className="Sidebar container-fluid col-sm-12 col-md-3">
           <div className="navbar navbar-default" role="navigation" style={{margin: "0px -30px 0px -10px"}}>
@@ -66,13 +79,13 @@ class Sidebar extends Component {
                                         <p className="cost">Cost</p>
                                     </div>
                                 </div>
-                                <div id="selctedmenu">
+                                <div id="selectedmenu">{selectedMenu}
                                 </div>
                                 <div align="right">
                                     <p id="total_pricesm"></p>
                                 </div>
                                 <div id="button" className="align-middle mb-5" align="center">
-                                    <Link to="/dishprintout">
+                                    <Link to="/dishoverview">
                                     <button id="Confirm_dinner" type="button" className="btn btn-secondary btn-lg">Confirm Dinner</button>
                                     </Link>
                                 </div>
