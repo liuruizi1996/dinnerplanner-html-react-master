@@ -21,12 +21,18 @@ class IngredientsList extends Component {
         } while ((this.state.menuType.indexOf(this.state.dish.dishTypes[index]) == -1) && ((index + 1) < this.state.dish.dishTypes.length));
         
         var newOrdermenu= this.props.ordermenu
-        newOrdermenu[this.state.menuType.indexOf(this.state.dish.dishTypes[index])]=this.state.dish
+        if(this.state.menuType.indexOf(this.state.dish.dishTypes[index]) == -1){
+          newOrdermenu[11]=this.state.dish
+          console.log("11")
+        }
+        else{
+          newOrdermenu[this.state.menuType.indexOf(this.state.dish.dishTypes[index])]=this.state.dish
+        }
+        
         var ordermenu=JSON.stringify(newOrdermenu)
         localStorage.setItem("ordermenu",ordermenu)
         
         var order_menu=JSON.parse(localStorage.getItem("ordermenu"))
-        console.log(localStorage)
         console.log(order_menu)
         //newOrdermenu.map(function(dish,index){
         //document.cookie=index+"="+dish.id

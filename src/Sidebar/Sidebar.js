@@ -3,59 +3,73 @@ import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 class Sidebar extends Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    // we put on state the properties we want to use and modify in the component
-    this.state = {
-      numberOfGuests: this.props.model.getNumberOfGuests(),
-      ordermenu:this.props.ordermenu
+        // we put on state the properties we want to use and modify in the component
+        this.state = {
+            numberOfGuests: this.props.model.getNumberOfGuests(),
+            ordermenu: this.props.ordermenu,
+            total_price: this.props.total_price
+        };
+        this.returnDishPrice = this.returnDishPrice.bind(this)
+        
+
+    }
+
+    // this methods is called by React lifecycle when the
+    // component is actually shown to the user (mounted to DOM)
+    // that's a good place to setup model observer
+    componentDidMount() {
+        this.props.model.addObserver(this);
+    }
+
+    // this is called when component is removed from the DOM
+    // good place to remove observer
+    componentWillUnmount() {
+        this.props.model.removeObserver(this);
+
+    }
+
+
+    // in our update function we modify the state which will
+    // cause the component to re-render
+    update() {
+        this.setState({
+            numberOfGuests: this.props.model.getNumberOfGuests()
+        });
+    }
+    
+    // our handler for the input's on change event
+    onNumberOfGuestsChanged = e => {
+        localStorage.setItem("numberOfGuests", e.target.value)
+        console.log(localStorage.numberOfGuests)
+        this.props.model.setNumberOfGuests(e.target.value);
     };
-  }
 
-  // this methods is called by React lifecycle when the
-  // component is actually shown to the user (mounted to DOM)
-  // that's a good place to setup model observer
-  componentDidMount() {
-    this.props.model.addObserver(this);
-  }
+    returnDishPrice(array) {
+        if (array && array.length) {
+            return (((array.length) * (this.state.numberOfGuests)).toFixed(2))
+        }
+        return 0
+    }
 
-  // this is called when component is removed from the DOM
-  // good place to remove observer
-  componentWillUnmount() {
-    this.props.model.removeObserver(this);
-  }
 
-  // in our update function we modify the state which will
-  // cause the component to re-render
-  update() {
-    this.setState({
-      numberOfGuests: this.props.model.getNumberOfGuests()
-    });
-  }
+    render() {
+        let selectedMenu = null
+        let ordermenu = this.state.ordermenu.filter(d => d)
+        selectedMenu = ordermenu && ordermenu.map(dish => (
+            <div key={dish.id} className="d-flex row">
+              <p className="col-3">{dish.title}</p>
+              <p className="col-3"></p>
+              <p className="col-3"></p>
+              <p className="col-3">SEK</p>
+            </div>
+        ))
+        
 
-  // our handler for the input's on change event
-  onNumberOfGuestsChanged = e => {
-    this.props.model.setNumberOfGuests(e.target.value);
-  };
-  
-  
-
-  render() {
-      let selectedMenu=null
-      if (this.state.ordermenu!==null) 
-      {let ordermenu=this.props.ordermenu.filter(d=>d)
-            selectedMenu = ordermenu&&ordermenu.map(dish=>(
-                <div key={dish.id} className="d-flex row">
-                  <p className="col-3">{dish.title}</p>
-                  <p className="col-3"></p>
-                  <p className="col-3"></p>
-                  <p className="col-3">SEK</p>
-                </div>
-            ))}
-      
-    return (
-      <div className="Sidebar container-fluid col-sm-12 col-md-3">
+        return (
+            <div className="Sidebar container-fluid col-sm-12 col-md-3">
           <div className="navbar navbar-default" role="navigation" style={{margin: "0px -30px 0px -10px"}}>
                         <div className="container-fluid">
                             <div className="navbar-header">
@@ -81,10 +95,10 @@ class Sidebar extends Component {
                                         <p className="cost">Cost</p>
                                     </div>
                                 </div>
-                                <div id="selectedmenu">{selectedMenu}
+                                <div id="selectedmenu" >{selectedMenu}
                                 </div>
                                 <div align="right">
-                                    <p id="total_pricesm"></p>
+                                    <p id="total_price">Total price SEK {this.state.total_price}</p>
                                 </div>
                                 <div id="button" className="align-middle mb-5" align="center">
                                     <Link to="/dishoverview">
@@ -96,8 +110,8 @@ class Sidebar extends Component {
                     </div>
             </div>
 
-    );
-  }
+        );
+    }
 }
 
 export default Sidebar;

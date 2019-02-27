@@ -10,7 +10,7 @@ const httpOptions = {
 class DinnerModel extends ObservableModel {
   constructor() {
     super();
-    this._numberOfGuests = 4;
+    this._numberOfGuests = parseInt(localStorage.numberOfGuests);
     this.getNumberOfGuests();
   }
 

@@ -44,7 +44,8 @@ class SelectDish extends Component {
         <div className="SelectDish container-fluid">
            <div className="row">
              <Sidebar model={this.props.model}
-                      ordermenu={this.state.ordermenu}/>
+                      ordermenu={this.state.ordermenu}
+                      total_price={this.props.total_price}/>
              <div className="container-fluid col-sm-12 col-md-9">
                <SearchBar keywords={this.state.keywords}
                      type={this.state.type}
